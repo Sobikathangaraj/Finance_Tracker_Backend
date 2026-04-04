@@ -1,5 +1,4 @@
-const User = require("../model/usermodel");
-const bcrypt = require("bcryptjs");
+const User = require("../model/user");
 
 // GET all users (admin only)
 const getAllUsers = async (req, res) => {
@@ -24,14 +23,28 @@ const getUserById = async (req, res) => {
   }
 };
 
-// UPDATE user role or status (admin only)
+// UPDATE user role + status (admin only)
 const updateUser = async (req, res) => {
   try {
     const { role, status } = req.body;
 
+    const updateFields = {};
+    if (role) {
+      if (!["admin", "analyst", "viewer"].includes(role)) {
+        return res.status(400).json({ message: "Invalid role. Must be admin, analyst or viewer" });
+      }
+      updateFields.role = role;
+    }
+    if (status) {
+      if (!["active", "inactive"].includes(status)) {
+        return res.status(400).json({ message: "Invalid status. Must be active or inactive" });
+      }
+      updateFields.status = status;
+    }
+
     const user = await User.findByIdAndUpdate(
       req.params.id,
-      { role, status },
+      updateFields,
       { new: true }
     ).select("-password");
 
