@@ -16,7 +16,8 @@ router.put("/updatedata/:id", verifyToken, roleCheck("admin"), updateTransaction
 router.delete("/deletedata/:id", verifyToken, roleCheck("admin"), deleteTransaction);
 
 // admin + analyst + viewer → read
-router.get("/getdata", verifyToken, roleCheck("admin", "analyst", "viewer"), getAllTransactions);
-router.get("/getdata/:id", verifyToken, roleCheck("admin", "analyst", "viewer"), getTransactionById);
+router.get("/getdata", verifyToken, roleCheck("admin", "analyst"), getAllTransactions);
+router.get("/getdata/:id", verifyToken, roleCheck("admin", "analyst"), getTransactionById);
 
 module.exports = router;
+
