@@ -35,6 +35,15 @@ BACKEND/
 
 
 ---
+## Roles and Permissions
+
+The system has three roles — **Admin**, **Analyst**, and **Viewer**.
+
+**Admin** has full access. Admin can view the dashboard, view and manage transactions (create, update, delete), and manage users including assigning roles and toggling user status.
+
+**Analyst** can view the dashboard and browse all transactions but cannot create, update, or delete any records. Analyst also has no access to user management.
+
+**Viewer** can only view the dashboard summary. Viewers cannot access transactions or user management at all.
 
 ---
 
@@ -148,6 +157,17 @@ GET    /transaction/getdata/:id       → get single
 PUT    /transaction/updatedata/:id    → update (admin only)
 DELETE /transaction/deletedata/:id    → soft delete (admin only)
 
+Dashboard APIs :
+### Dashboard (All roles)
+GET /dashboard/summary           → total income, expense, balance
+GET /dashboard/category-totals   → spending by category
+GET /dashboard/monthly-trends    → income vs expense by month
+GET /dashboard/recent-activity   → last 10 transactions
+
+### Filtering :
+type=income
+category=Salary
+page=1&limit=10
 ---
 
 ## To Run Locally
