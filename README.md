@@ -85,7 +85,7 @@ I created two middleware files:
 
 **auth.js** - Verifies JWT token on every protected route:
 ```javascript
-const decoded = jwt.verify(token, process.env.JWT_SECRET);
+const decoded = jwt.verify(token,JWT_SECRET);
 req.user = decoded;
 next();
 ```
