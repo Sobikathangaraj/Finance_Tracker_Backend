@@ -1,7 +1,7 @@
 const User = require("../model/usermodel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const JWT_SECRET = "finance_super_secret_key";
+const JWT_SECRET = "****secret_key";
 // Register
 const register = async (req, res) => {
   try {
