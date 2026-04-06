@@ -6,8 +6,8 @@ const server = express();
 
 // Hardcoded Environment Variables (Included in code as requested)
 const PORT = 5000;
-const MONGO_URI = "mongodb+srv://--------------.ufmnkvg.mongodb.net/Finance_tracking";
-const JWT_SECRET = "***secret_key";
+const MONGO_URI = "mongodb+srv://sobika0505:Sobika04052005@sobika.ufmnkvg.mongodb.net/Finance_tracking";
+const JWT_SECRET = "finance_super_secret_key";
 
 server.use(express.json());
 server.use(cors());
@@ -24,7 +24,7 @@ server.use("/user", userRouter);
 server.use("/dashboard", dashboardRouter);
 
 // MongoDB connect
-mongoose.connect("mongodb+srv://-------.ufmnkvg.mongodb.net/Finance_tracking")
+mongoose.connect("mongodb+srv://sobika0505:Sobika04052005@sobika.ufmnkvg.mongodb.net/Finance_tracking")
   .then(() => console.log("MongoDB Connected..."))
   .catch(() => console.log("MongoDB Not Connected.."));
 
